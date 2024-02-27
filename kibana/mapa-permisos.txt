@@ -1,4 +1,4 @@
-//PUT permisos-n5
+// PUT permisos-n5
 PUT permisos-n5/_mapping/_doc
 {
   "properties": {

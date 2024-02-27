@@ -1,4 +1,4 @@
--- Crear la base de datos ChallengeTechFullStackN5DB
+-- Crear la base de datos ChallengeTechFullStackN5DB 
 CREATE DATABASE ChallengeTechFullStackN5DB;
 GO
 
