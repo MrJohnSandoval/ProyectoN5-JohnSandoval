@@ -1,0 +1,131 @@
+version: '3'
+services:
+  mssqlserver:
+    image: mcr.microsoft.com/mssql/server
+    container_name: SQLServer-Compose
+    hostname: sqlserver
+    networks:
+      - n5net
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: JJS.jjs-3377*
+    ports:
+      - "1433:1433"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: Kafka-Compose
+    hostname: kafkaserver
+    networks:
+      - n5net
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafkaserver:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+
+  zookeeper:
+    image: zookeeper:latest
+    container_name: Zookeeper-Compose
+    hostname: zookeeperserver
+    networks:
+      - n5net
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+      - "2000:2000"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+    container_name: Elasticsearch-Compose
+    hostname: elasticsearchserver
+    networks:
+      - n5net
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.5.1
+    container_name: kibana-Compose
+    hostname: kibanaserver
+    networks:
+      - n5net
+    ports:
+      - "5601:5601"
+
+  backendfullstackn5:
+    image: johndoval/proyecton5-backendserver
+    container_name: Backend-Compose
+    hostname: backendserver
+    networks:
+      - n5net
+    ports:
+      - "8080:8080"
+
+  frontendfullstackn5:
+    image: johndoval/proyecton5-frontendserver
+    container_name: Frontend-Compose
+    hostname: frontendserver
+    networks:
+      - n5net
+    ports:
+      - "3000:3000"
+
+networks:
+  n5net:
+    external: true
+
+volumes:
+  kafka_secrets_volume_1:
+    driver: local
+    driver_opts:
+      type: none
+      device: "2214332af104c0061d88cd0ce4307aaba3809697d760c96cff15ce3eae938178"
+      o: bind
+
+  kafka_data_volume_1:
+    driver: local
+    driver_opts:
+      type: none
+      device: "2214332af104c0061d88cd0ce4307aaba3809697d760c96cff15ce3eae938178"
+      o: bind
+
+  kafka_secrets_volume_2:
+    driver: local
+    driver_opts:
+      type: none
+      device: "610012f71578900d4c2cd76361f5130584a3869a3af70bdb998ba8cc419ac752"
+      o: bind
+
+  kafka_data_volume_2:
+    driver: local
+    driver_opts:
+      type: none
+      device: "610012f71578900d4c2cd76361f5130584a3869a3af70bdb998ba8cc419ac752"
+      o: bind
+
+  zookeeper_volume_1:
+    driver: local
+    driver_opts:
+      type: none
+      device: "ade2097afb2f705b9b53b4b33d33b3af2313131f9ff0c8bbaa5c68234005fd5e"
+      o: bind
+
+  zookeeper_volume_2:
+    driver: local
+    driver_opts:
+      type: none
+      device: "ade4cf957ad9ac52c2766c73895e28b13fb9f2fdae5e4cc49e4cdf1cded3c6c1"
+      o: bind
+
+  zookeeper_volume_3:
+    driver: local
+    driver_opts:
+      type: none
+      device: "cada96723451afb1d3ec360d27559247101c8be72a998a95190c9a8654d4c46b"
+      o: bind
+

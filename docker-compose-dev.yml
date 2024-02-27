@@ -1,0 +1,27 @@
+version: '3'
+services:
+  backendserver:
+    build:
+      context: C:\Users\Admin\source\repos\BackendChallengeTechFullStackN5\.
+      dockerfile: C:\Users\Admin\source\repos\BackendChallengeTechFullStackN5\Dockerfile
+    container_name: Backend-Compose
+    hostname: backendserver
+    networks:
+      - n5net
+    ports:
+      - "8080:8080"
+
+  frontendserver:
+    build:
+      context: C:\Users\Admin\source\repos\frontendchallengetechfullstackn5\.
+      dockerfile: C:\Users\Admin\source\repos\frontendchallengetechfullstackn5\Dockerfile
+    container_name: Frontend-Compose
+    hostname: frontendserver
+    networks:
+      - n5net
+    ports:
+      - "3000:3000"
+
+networks:
+  n5net:
+    external: true

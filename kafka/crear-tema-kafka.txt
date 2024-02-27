@@ -1,0 +1,13 @@
+1.) docker exec -it Kafka-Compose /bin/bash
+2.) kafka-topics --create --topic chtechfullstackn5-permisos --bootstrap-server kafkaserver:9092 --replication-factor 1 --partitions 1
+
+o desde linea de comando, usando docker:
+
+docker exec -it Kafka-Compose kafka-topics --create --topic chtechfullstackn5-permisos --partitions 1 --replication-factor 1 --bootstrap-server kafkaserver:9092
+
+Los argumentos para --topic y --bootstrap-server, deben ir en el archivo appsettings.json de Backend en C#, en esta sección:
+
+"Kafka": {
+    "Topic": "chtechfullstackn5-permisos",
+    "BootstrapServers": "http://kafkaserver:9092"
+  }

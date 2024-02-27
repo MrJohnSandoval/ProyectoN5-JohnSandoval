@@ -1,0 +1,24 @@
+//PUT permisos-n5
+PUT permisos-n5/_mapping/_doc
+{
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "nombreEmpleado": {
+      "type": "text"
+    },
+    "apellidoEmpleado": {
+      "type": "text"
+    },
+    "tipoPermiso": {
+      "type": "integer"
+    },
+    "fechaPermiso": {
+      "type": "date"
+    },
+    "accion": {
+      "type": "text"
+    }
+  }
+}
