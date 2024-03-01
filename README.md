@@ -9,17 +9,27 @@ https://github.com/MrJohnSandoval/ProyectoN5-JohnSandoval.git
 
 A continuación se debe ejecutar el siguiente comando:
 
-docker-compose -f docker-compose.yml up -d
+**docker-compose -f docker-compose.yml up -d**
 
 Se descargaran e instalaran los contenedores del proyecto, incluso los del frontend y el backend.
 
 https://github.com/MrJohnSandoval/ProyectoN5-JohnSandoval
 
-**\kafka** = Intruciones para la creación del topic
+1.) **\sqlserver** = archivo .sql para la creación de la base de datos
 
-**\kibana** = mapa del la estructura de la tabla permiso en elasticsearh
+2.) **\kafka** = Intruciones para la creación del topic
 
-**\sqlserver** = archivo .sql para la creación de la base de datos
+3.) **\kibana** = mapa del la estructura de la tabla permiso en elasticsearh
+
+# Descripción de los archivos .yml de docker-compose:
+
+**Principal:**
+
+**docker-compose.yml** = Instala todo lo necesario, la infraestructura base + la instalación del backend y el frontend.
+
+**Secundarios:**
+
+Los archivos secundarios no son necesarios, si todo sale bien, con el principal.
 
 **docker-compose-base.yml** = Instalación de la infraestructura base, solamente.
 
@@ -27,7 +37,6 @@ https://github.com/MrJohnSandoval/ProyectoN5-JohnSandoval
 
 **docker-compose-kafka-zookeeper.yml** = Instalación de solo zookeeper
 
-**docker-compose.yml** = Instala todo lo necesario, la infraestructura base + la instalación del backend y el frontend.
 
 
 
